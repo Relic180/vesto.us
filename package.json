@@ -1,0 +1,39 @@
+{
+  "name": "vesto.us",
+  "author": "relic",
+  "version": "1.0.0",
+  "description": "vesto.us web application platform",
+  "homepage": "https://github.com/Relic180/vesto.us#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "dependencies": {
+    "hapi": "^15.0.3",
+    "npm": "^3.10.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "babel": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "css-loader": "^0.24.0",
+    "dot-loader": "^0.1.1",
+    "file-loader": "^0.9.0",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.11.1",
+    "sass-loader": "^4.0.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relic180/vesto.us.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Relic180/vesto.us/issues"
+  }
+}

@@ -1,0 +1,24 @@
+{% extends 'olympus.html' %}
+
+{% block title %}Internal Tools{% endblock %}
+
+<script>
+{% block vars %}{% endblock %}
+</script>
+
+{% block body %}
+<body id="Prometheus">
+
+<div id="main-body" data-js="app-body" class="is-hidden">
+    <div data-js="page-container"></div>
+</div>
+
+<!-- Improve initial load appearance -->
+<div id="application-loading" data-js="application-loading">
+    <label>Loading...</label> <!-- TODO: This should go away. Use something tools'y (that's a new word now) -->
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="/static/_prometheus_app.js"></script>
+{% endblock %}

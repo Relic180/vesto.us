@@ -1,0 +1,16 @@
+@import '../../../_blueprint/styles/scaffold';
+
+.modal-contact {
+
+    [class|=contact-form-item] {
+        width: 100%;
+    }
+
+    .contact-form-item-message {
+        margin: 15px 0 30px;
+    }
+
+    .btn-submit {
+        float: right;
+    }
+}

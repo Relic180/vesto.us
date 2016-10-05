@@ -1,0 +1,93 @@
+@import '../../../_blueprint/styles/scaffold';
+
+.messenger-message.simple {
+    width: 100%;
+
+    .message-simple-inner {
+        display: flex;
+        box-sizing: border-box;
+        box-shadow: 5px 5px 30px transparentize($black, .85);
+        text-align: left;
+        @include linear-gradient(to bottom, $blueLight, darken($blueLight, 20%));
+
+        &.error {
+            @include linear-gradient(to bottom, lighten($error, 15%), darken($error, 5%));
+
+            .message-simple-icon {
+                background: lighten($error, 15%);
+            }
+        }
+
+        &.success {
+            @include linear-gradient(to bottom, lighten($highlight, 15%), darken($highlight, 5%));
+
+            .message-simple-icon {
+                background: lighten($highlight, 15%);
+            }
+        }
+    }
+
+    .message-simple-content {
+        flex: 1 1 auto;
+        padding: 8px 30px 6px 14px;
+    }
+
+    .message-simple-title {
+        display: block;
+        margin: 0;
+        color: $white;
+        font-size: 15px;
+        font-weight: $bold;
+        line-height: 20px;
+    }
+
+    .message-simple-copy {
+        color: $white;
+        padding: 5px 0;
+        font-size: 14px;
+        @include break-words()
+    }
+
+    .message-simple-icon {
+        position: relative;
+        flex: 0 0 30px;
+        padding: 8px 0 8px 0;
+        color: $white;
+        font-size: 20px;
+        pointer-events: none;
+        background: transparentize($white, .75);
+        float: left;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+    }
+
+    .message-simple-close {
+        position: absolute;
+        width: 30px;
+        height: 100%;
+        padding: 10px;
+        top: 0;
+        right: 0;
+        color: $white;
+        cursor: pointer;
+        border-left-width: 0;
+        box-sizing: border-box;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        &:hover {
+            color: $white;
+            background: transparentize($white, .8);
+        }
+    }
+}

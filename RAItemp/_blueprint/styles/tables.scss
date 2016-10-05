@@ -1,0 +1,134 @@
+.fancy-table-1 {
+
+    tr {
+
+        &:hover {
+
+            th:first-child,
+            td:first-child {
+                background-color: darken($grayLight, 5%);
+            }
+
+            th:not(:first-child),
+            td:not(:first-child) {
+                color: $blueDark;
+            }
+        }
+
+        &:first-child {
+
+            th:first-child,
+            td:first-child {
+                border-radius: 10px 0 0 0;
+            }
+        }
+
+        &:last-child {
+
+            th:first-child,
+            td:first-child {
+                border-radius: 0 0 0 10px;
+            }
+        }
+
+        > th,
+        > td {
+            padding: 4px 5px;
+        }
+    }
+
+    th:first-child,
+    td:first-child {
+        padding-left: 12px;
+        color: $white;
+        font-size: 12px;
+        font-style: italic;
+        text-align: right;
+        white-space: nowrap;
+        background-color: darken($grayLight, 7%);
+        vertical-align: middle;
+
+        &::after {
+            content: ':';
+        }
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+        padding-left: 5px;
+        color: lighten($blueDark, 10%);
+        text-align: left;
+        border-bottom: 1px solid lighten($grayLight, 5%);
+    }
+}
+
+.fancy-table-2 {
+
+        tr {
+
+        &:hover {
+
+            th:first-child,
+            td:first-child {
+                background-color: darken($grayLight, 5%);
+            }
+
+            th:not(:first-child),
+            td:not(:first-child) {
+                color: $blueDark;
+            }
+        }
+
+        &:first-child {
+
+            th:first-child,
+            td:first-child {
+                border-radius: 10px 0 0 0;
+            }
+        }
+
+        &:last-child {
+
+            th:first-child,
+            td:first-child {
+                border-radius: 0 0 0 10px;
+            }
+        }
+
+        > th,
+        > td {
+            padding: 4px 5px;
+        }
+    }
+
+    th:first-child,
+    td:first-child {
+        padding-left: 12px;
+        color: $white;
+        font-size: 12px;
+        font-style: italic;
+        text-align: right;
+        white-space: nowrap;
+        background: transparent;
+        border-radius: 0 !important;
+        vertical-align: middle;
+        @include linear-gradient(to right, transparentize($blue, .8), transparentize($blue, .4) 50%);
+
+        &::after {
+            content: ':';
+        }
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+        padding-left: 5px;
+        color: lighten($blueDark, 10%);
+        text-align: left;
+        border-bottom: 1px solid lighten($grayLight, 5%);
+    }
+
+    th:first-child,
+    td:first-child {
+
+    }
+}

@@ -1,0 +1,53 @@
+<div class="page-create-account">
+
+    <div class="create-account-container">
+
+        <h4 class="create-account-form-title">Access your offers.</h4>
+
+        <div class="create-account-entry-form">
+
+            <div class="create-account-auth-row">
+
+                <div class="btn-auth-social auth-google" data-js="google">
+
+                    <span class="span-shadow-google">
+                        <i class="icon icon-google-plus"></i>
+                    </span>
+
+                    <span class="btn-auth-label">Google</span>
+
+                </div>
+
+                <div class="btn-auth-social auth-facebook" data-js="facebook">
+
+                    <span class="span-shadow-facebook">
+                        <i class="icon icon-facebook-f"></i>
+                    </span>
+
+                    <span class="btn-auth-label">Facebook</span>
+
+                </div>
+
+            </div>
+
+            <div class="create-account-form-separator">
+                <label>or</label>
+            </div>
+
+            <div class="auth-input" data-js="email"></div>
+            <div class="auth-input" data-js="password"></div>
+
+            <a class="btn btn-dark create-account-form-submit" data-js="create">Go</a>
+
+            <div class="create-account-terms">
+                <p>Don't worry, we never post without your permission.</p>
+                <p>By signing up you agree to Recruiter.AI's <a data-navigate="/tos">Terms of Service</a> and <a data-navigate="/privacy">Privacy Policy</a></p>
+            </div>
+
+            <a class="already-have-account" data-navigate="/login">I already have an account</a>
+
+        </div>
+
+    </div>
+
+</div>

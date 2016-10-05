@@ -1,0 +1,11 @@
+<div class="tagpicker-inputs-row">
+
+    <div class="question-input-tagpicker">
+        <div class="question-input" data-js="q-input"></div>
+        <i class="icon icon-plus" data-js="add"></i>
+    </div>
+
+    <div class="question-selected-row" data-js="selected"></div>
+
+</div>
+

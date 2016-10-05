@@ -1,0 +1,164 @@
+///////////////////////////
+// Master Color List
+$white: #FFFFFF;
+$grayLighter: #F4F6F7;
+$grayLight: #D8DDDF;
+$gray: #AAAEB7;
+$grayDark: #7B8087;
+$grayDarker: #4F5154;
+$black: #000000;
+
+$blueDarker: #004264;
+$blueDark: #004D71;
+$blue: #4C96B7;
+$blueLight: #82D1FF;
+$blueLighter: #EDF6FD;
+
+$highlightLighter: #E9f7E5; // Greens...
+$highlightLight: #D6E8C7;
+$highlight: #58A05A;
+$highlightDark: #3E753F;
+$highlightDarker: #1D461D;
+
+$errorLighter: #FDF7F7; // Reds...
+$errorLight: #EDD3D7;
+$error: #B74B4B;
+$errorDark: #A21313;
+$errorDarker: #8C0000;
+
+$noticeYellow: #FEE66E; // Yellows...
+$noticeLighter: #FFFCAB;
+$noticeLight: #F5CA76;
+$notice: #FDAF3C;
+$noticeDark: #EFA334;
+
+$facebookBlue: #3765A3;
+$twitterBlue: #5EA9DD;
+$googleRed: #DC4A38;
+$linkedinBlue: #0274B3;
+$dribbblePink: #F26798;
+
+///////////////////////////
+// Typography Vals
+$bold: 900;
+$norm: 400;
+$light: 300;
+
+///////////////////////////
+// Z-Index Distribution
+$z-bg: 0;
+$z-stage: 1;
+$z-footer: 200;
+$z-modal-mask: 400;
+$z-screentip: 600;
+$z-header: 800;
+$z-header-screentip: 1000;
+$z-modal: 1200;
+$z-modal-screentip: 1400;
+$z-messenger: 1600;
+
+// Mixins
+
+/*@mixin boost-specificity($rules) { // TODO: Find a better solution
+
+    #main-body & {
+        $rules();
+    }
+}*/
+
+@mixin clearfix() {
+
+    &:after {
+        display: table;
+        content: '';
+        clear: both;
+    }
+}
+
+@mixin draggable() {
+    cursor: grab;
+
+    &:active,
+    &:focus {
+        cursor: grabbing;
+    }
+}
+
+@mixin linear-gradient($direction, $color-stops...) { // https://www.sitepoint.com/building-linear-gradient-mixin-sass/
+    // Direction has been omitted and happens to be a color-stop
+    @if is-direction($direction) == false {
+        $color-stops: $direction, $color-stops;
+        $direction: 180deg;
+    }
+
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+@mixin center-image-wrapper() {
+    overflow: hidden;
+    z-index: $z-stage; // Fixes clipping bug in chrome
+
+    img {
+        position: absolute;
+        display: block;
+        min-width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+@mixin break-words() {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/// Test if `$value` is a valid direction
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+    $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+    $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+    @return $is-keyword or $is-angle;
+}
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+/// @throw Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.;
+@function legacy-direction($value) {
+    @if is-direction($value) == false {
+        @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+    }
+
+    $conversion-map: (
+        to top          : bottom,
+        to top right    : bottom left,
+        to right top    : left bottom,
+        to right        : left,
+        to bottom right : top left,
+        to right bottom : left top,
+        to bottom       : top,
+        to bottom left  : top right,
+        to left bottom  : right top,
+        to left         : right,
+        to left top     : right bottom,
+        to top left     : bottom right
+    );
+
+    @if map-has-key($conversion-map, $value) {
+        @return map-get($conversion-map, $value);
+    }
+
+    @return 90deg - $value;
+}

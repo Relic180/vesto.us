@@ -1,0 +1,83 @@
+@import '../../../_blueprint/styles/scaffold';
+
+.screentip-simple {
+    padding: 5px 10px;
+    background-color: transparentize($black, .35);
+    border: 1px solid $blueDark;
+    border-radius: 3px;
+    box-shadow: 0 1px 20px -1px transparentize($black, .1);
+    color: $white;
+
+    &.screentip-light {
+        background-color: transparentize($white, .1);
+        border-color: $blueLight;
+        color: $blue;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        bottom: -10px;
+        right: -10px;
+        border-radius: 8px;
+        background: transparentize($grayDark, .9);
+        border: 1px solid transparentize($blueLight, .7);
+        box-shadow: 0 3px 20px -2px transparentize($white, .5);
+    }
+
+    .label {
+        color: inherit;
+        font-size: 12px;
+    }
+
+    .title {
+        margin: 0 0 5px;
+    }
+
+    p {
+        color: inherit;
+        display: inline-block;
+        margin: 0 0 10px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    /////// LEARNMORE TIPS ///////
+
+    [class|=learnmore] {
+        padding: 10px 5px;
+        max-width: 450px;
+
+        p, li {
+            line-height: 18px;
+        }
+
+        ul, ol {
+            list-style-position: inside;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        li {
+            margin-bottom: 10px;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .learnmore-emailauth {
+        background-color: transparentize($white, .05);
+    }
+}

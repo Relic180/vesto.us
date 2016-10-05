@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>{% block title %}Recruiter.AI v2.0{% endblock%}</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+
+<link rel="icon" href="/static/favicon.ico?v=1"> <!-- TODO: Waiting for branding still, don't forget to update this -->
+
+<style> /* Unminified styles located in static/on_load.css */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}body,html,input,textarea{font-size:14px}body,h1,h2,h3,h4,h5,h6,html,input,textarea{font-family:'Open Sans',sans-serif}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1;margin:0;color:#000;overflow:hidden}h1,h2,h3,h4,h5,h6{display:block;font-weight:400;font-style:normal}strong{font-weight:900}em{font-style:italic}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}@media print{h1{page-break-before:always}h1,h2,h3,h4,h5,h6{page-break-after:avoid}dl,ol,ul{page-break-before:avoid}}body,html{height:100%;background-color:#fff}#main-body{position:relative;z-index:1}@media only screen and (max-width:949px){body,html{height:auto}body{position:fixed;top:0;right:0;bottom:0;left:0}}h1{font-size:2em}h2{font-size:1.5em}h3{font-size:1.17em}h4{font-size:1.12em}h5{font-size:.83em}h6{font-size:.67em}.is-hidden{display:none!important}#application-loading{position:fixed;top:0;right:0;bottom:0;left:0;z-index:99999;background-color:#fff}#application-loading label{position:absolute;top:50%;left:50%;color:#4C96B7;font-family:'Century Gothic',CenturyGothic,AppleGothic,sans-serif;font-size:28px;font-weight:900;transform:translate(-50%,-50%)}
+</style>
+
+<script>
+const django = { // Scope our server supplied variables
+    endpoints: {{endpoints|safe}},
+    authUser: {{user|safe}},
+    isInvalidSignature: {{is_invalid_signature|default:'false'}},
+    isProduction: {{is_production}}
+};
+
+// Urls that are part of 3rd party libraries, so harder to integrate with our endpoint registry
+django.endpoints.page.googleLogin = "{% url 'social:begin' 'google-oauth2' %}";
+django.endpoints.page.fbLogin = "{% url 'social:begin' 'facebook' %}";
+
+var DEBUGGING = {% if debug %}true{% else %}false{% endif %};
+{% block vars %}{% endblock %}
+</script>
+
+</head>
+
+{% block body %}<body>{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+
+<script>
+    window.jQuery || document.write('<script src="/static/lib_fallback/jquery-3.1.0.min.js">\x3C/script>');
+    window._ || document.write('<script src="/static/lib_fallback/lodash.min.js">\x3C/script>');
+    window.Backbone || document.write('<script src="/static/lib_fallback/backbone-min.js">\x3C/script>');
+</script>
+
+<script type="text/javascript" src="/static/_libpack_gsap.js"></script>
+<script type="text/javascript" src="/static/_blueprint.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+<!-- TODO: Let's lazy-load additional fonts by using hidden elements and js -->
+<!-- https://css-tricks.com/preventing-the-performance-hit-from-custom-fonts/ -->
+
+{% block scripts %}{% endblock %}
+
+<script> /* Google Analytics */
+    /*  DISABLING -- MIGHT BE MOVING 100% OVER TO MIXPANEL, SO CHUCK THIS TO IMPROVE APP LOADTIME
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-70351813-1', 'auto');
+    ga('send', 'pageview');
+    */
+</script>
+
+</body>
+</html>

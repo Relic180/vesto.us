@@ -1,5 +1,0 @@
-<div class="question-inputs-row">
-    {{~ it.inputs :input:index}}
-    <div class="question-input" data-js="q-input"></div>
-    {{~ }}
-</div>

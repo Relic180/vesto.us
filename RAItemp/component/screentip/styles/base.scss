@@ -1,9 +1,0 @@
-@import '../../../_blueprint/styles/scaffold';
-
-.screentip {
-    position: absolute;
-    left: -99999px;
-    opacity: 1;
-    z-index: $z-screentip;
-    box-sizing: border-box;
-}

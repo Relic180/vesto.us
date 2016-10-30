@@ -1,7 +1,0 @@
-{{? it.richText}}
-    <div{{? it.richText.class}} class="{{=it.richText.class}}{{? }}">
-        {{=it.richText.content}}
-    </div>
-{{?? }}
-    <span class="label">{{=it.str || it.msg}}</span>
-{{? }}

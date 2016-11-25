@@ -1,26 +1,5 @@
-# SPA-bones
-This is a single-page app core that uses *backbone.js*, *webpack* and *node.js* to create an extremely fast web application foundation and provides a handful of tools and basic functionality for most typical webapp builds while trying to impose the least amount of assumptions about any particular functionality.
+# Vesto.us
+Interactive life calendar that integrates automated data gathering and community tools. Developed from [SPA-Bones framework](https://github.com/Relic180/spa-bones).
 
-Basically, to bootstrap your new single-page app and get extremely fast overall performance out of it.
-
-# Setup
-The core install requires node and npm.
-
-- Clone the repo and run `npm install` from project root to import dependancies.
-
-# How to Use
-
-- Adding new Classes
-    // Pending Desc
-
-- Modals
-    // Pending Desc
-
-- Screentips (Tooltips)
-    // Pending Desc
-
-- Messenger
-    // Pending Desc
-
-- Lists
-    // Pending Desc
+# Notice:
+This is propriatary web-app and wasn't built with the intention of being repurposed for other projects. The [SPA-Bones framework](https://github.com/Relic180/spa-bones) that this platform is built on is a white-label project and is much more suitable for supporting a variety of different web-app platforms.

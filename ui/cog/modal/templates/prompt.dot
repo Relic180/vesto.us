@@ -1,0 +1,34 @@
+{{? it.html}}
+    {{=it.html}}
+{{?? }}
+    <p class="modal-prompt-msg">{{=it.msg}}</p>
+{{? }}
+
+{{? it.input}}
+
+    <form data-js="form" novalidate>
+        <div class="modal-prompt-input" data-js="input"></div>
+    </form>
+
+{{? }}
+
+<div class="btn-container{{? it.arrange === 'row'}} is-row{{? }}">
+
+    <a class="btn{{? it.confirmClass}} {{=it.confirmClass}}{{? }}" data-js="on-confirm">
+        {{? it.confirmIcon}}<i class="icon icon-{{=it.confirmIcon}}"></i>{{? }}
+        <label>{{=it.confirmLabel}}</label>
+    </a>
+
+    {{? it.onConfirmAlt && it.confirmAltLabel}}
+    <a class="btn{{? it.confirmAltClass}} {{=it.confirmAltClass}}{{? }}" data-js="on-confirm-alt">
+        {{? it.confirmAltIcon}}<i class="icon icon-{{=it.confirmAltIcon}}"></i>{{? }}
+        <label>{{=it.confirmAltLabel}}</label>
+    </a>
+    {{? }}
+
+    <a class="btn{{? !it.arrange === 'row'}} btn-small{{? }} {{? it.cancelClass}}{{=it.cancelClass}}{{?? }}btn-ghost{{? }}" data-js="on-cancel">
+        {{? it.cancelIcon}}<i class="icon icon-{{=it.cancelIcon}}"></i>{{? }}
+        <label>{{=it.cancelLabel}}</label>
+    </a>
+
+</div>

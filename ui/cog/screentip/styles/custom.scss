@@ -1,0 +1,25 @@
+@import '../../../styles/scaffold';
+
+.screentip-custom {
+
+    &:not(.is-transparent) {
+        padding: 5px 10px;
+        background-color: transparentize($black, .35);
+        border: 1px solid $grayDark;
+        border-radius: 3px;
+        box-shadow: 0 1px 20px -1px transparentize($black, .1);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            bottom: -10px;
+            right: -10px;
+            border-radius: 8px;
+            background: transparentize($grayDark, .9);
+            border: 1px solid transparentize($grayLight, .7);
+            box-shadow: 0 3px 20px -2px transparentize($white, .5);
+        }
+    }
+}

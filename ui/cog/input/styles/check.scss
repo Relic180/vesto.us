@@ -1,0 +1,198 @@
+@import '../../../styles/scaffold';
+
+.extended-el-check {
+    position: relative;
+
+    &.is-inline {
+
+        .checkbox-row {
+            display: inline-block;
+            margin-right: 30px;
+        }
+    }
+
+    &.is-light {
+
+        .checkbox-row {
+
+            &.is-selected {
+
+                label {
+                    color: darken($grayLight, 10%);
+                }
+            }
+        }
+
+        .icon-check {
+            color: darken($grayLight, 10%);
+        }
+    }
+
+    &.is-filled {
+
+        &.is-light {
+
+            .is-selected {
+
+                .checkbox {
+                    background-color: $grayLight;
+                    border: 1px solid $grayLight;
+                }
+
+                label {
+                    color: darken($grayLight, 10%);
+                }
+            }
+        }
+
+        .is-selected {
+
+            .checkbox {
+                background-color: $grayDark;
+                border: 1px solid $grayDark;
+            }
+        }
+
+        .checkbox {
+            background-color: transparent;
+        }
+
+        .icon-check {
+            top: 12px;
+            left: 7px;
+            color: $white;
+            font-size: 14px;
+        }
+    }
+
+    &.is-round {
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+        }
+
+        .icon-check {
+            top: 5px;
+            left: 9px;
+            font-size: 14px;
+        }
+
+        label,
+        .custom-text {
+            vertical-align: 5px;
+        }
+    }
+
+    &.is-radio {
+
+        &.is-round {
+
+            .icon-check {
+                width: 14px;
+                height: 14px;
+                top: 12px;
+                left: 9px;
+                border-radius: 50%;
+            }
+        }
+
+        &.is-light {
+
+            .is-selected {
+
+                .icon-check {
+                    background-color: $grayLight;
+                }
+            }
+        }
+
+        .is-selected {
+
+            .icon-check {
+                background-color: $grayDark;
+            }
+        }
+
+        .icon-check {
+            width: 12px;
+            height: 12px;
+            top: 13px;
+            left: 8px;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        .checkbox {
+            background-color: transparent !important;
+            border: 1px solid $grayLight !important;
+        }
+    }
+
+    &.is-disabled {
+
+        &:hover {
+            cursor: not-allowed;
+        }
+
+        .checkbox-row {
+            color: $gray;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+
+    .checkbox-row {
+        position: relative;
+
+        &.is-selected {
+
+            label {
+                color: lighten($grayDark, 10%);
+                font-style: italic;
+            }
+        }
+    }
+
+    .checkbox {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 5px 0;
+        background-color: $white;
+        border: 1px solid $grayLight;
+        outline: none;
+        appearance: none;
+    }
+
+    .icon-check {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: $grayDark;
+        opacity: 1;
+        font-size: 22px;
+    }
+
+    label {
+        font-size: 15px;
+        text-transform: capitalize;
+        vertical-align: 3px;
+        user-select: none;
+    }
+
+    .custom-text {
+        height: 18px;
+        margin-left: 10px;
+        vertical-align: 3px;
+    }
+
+    .checkbox,
+    .icon-check,
+    label {
+        cursor: pointer;
+    }
+}

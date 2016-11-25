@@ -1,0 +1,184 @@
+@import '../../../styles/scaffold';
+
+$trackHeight: 7px;
+$handleDiameter: 14px;
+$gutter: 23px;
+$speed: 250ms;
+
+.extended-el-slider {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: $gutter;
+    user-select: none;
+
+    &.is-focused {
+
+        .slider-label {
+            color: $gray;
+        }
+
+        .slider-track {
+            background-color: $gray;
+        }
+
+        .slider-handle {
+            color: $gray;
+
+            &::before {
+                background-color: lighten($gray, 5%);
+                box-shadow: 0 0 2px 2px transparentize($grayLighter, .6);
+            }
+        }
+
+        .slider-progress {
+            background-color: lighten($grayDark, 10%);
+            box-shadow: 0 0 4px 1px transparentize($gray, .8);
+        }
+
+        > .slider-value {
+            bottom: -2px;
+            color: $black;
+            transform: translateX(-50%) scale(1.2);
+        }
+    }
+
+    &.is-disabled {
+        pointer-events: none;
+
+        .slider-label {
+            color: $gray;
+        }
+
+        .slider-handle {
+            color: $gray;
+            cursor: normal;
+
+            &::before {
+                background-color: $gray;
+            }
+        }
+
+        .slider-progress {
+            background-color: $gray;
+        }
+    }
+
+    &.is-handle-value {
+
+        &.is-focused {
+
+            .slider-value {
+                transform: translateX(-50%) translateY(-50%) scale(1.2);
+            }
+        }
+
+        .slider-label {
+            margin-bottom: 15px;
+        }
+
+        .slider-handle {
+            width: 25px;
+            height: 25px;
+
+            &::before {
+                width: 25px;
+                height: 25px;
+                background-color: $grayLight;
+            }
+
+            .slider-value {
+                top: 50%;
+                left: 50%;
+                font-size: 13px;
+                color: $grayDark;
+                line-height: 30px;
+                pointer-events: none;
+                transform: translateX(-50%) translateY(-50%);
+                transition: all $speed;
+            }
+        }
+    }
+
+    .slider-label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        color: $gray;
+        font-size: 13px;
+        transition: color $speed;
+    }
+
+    .slider-track {
+        position: relative;
+        width: 100%;
+        height: $trackHeight;
+        border-radius: $trackHeight;
+        background-color: $grayLight;
+        transition: background-color $speed;
+    }
+
+    .slider-handle {
+        position: absolute;
+        width: $handleDiameter;
+        height: $handleDiameter;
+        padding: 15px;
+        top: 50%;
+        left: -15px;
+        cursor: pointer;
+        transform: translateY(-50%);
+
+        &:hover {
+
+            &::before {
+                background-color: lighten($gray, 5%);
+                box-shadow: 0 0 2px 2px transparentize($grayLighter, .6);
+            }
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: $handleDiameter;
+            height: $handleDiameter;
+            border-radius: $handleDiameter;
+            background-color: $gray;
+        }
+    }
+
+    .slider-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        border-radius: $handleDiameter 0 0 $handleDiameter;
+        background-color: $grayDark;
+        box-shadow: 0 0 0 0 transparentize($gray, 1);
+        transition: background-color $speed, box-shadow $speed;
+    }
+
+    .slider-min,
+    .slider-max,
+    .slider-value {
+        position: absolute;
+        bottom: 0;
+        font-size: 12px;
+        color: $grayDark;
+        line-height: $gutter;
+    }
+
+    .slider-min {
+        left: 3px;
+    }
+
+    .slider-max {
+        right: 3px;
+    }
+
+    > .slider-value {
+        left: 50%;
+        font-size: 13px;
+        transform: translateX(-50%);
+        transition: all $speed;
+    }
+}

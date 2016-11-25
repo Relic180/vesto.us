@@ -1,0 +1,31 @@
+[data-module="list"] {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .element-list-inner {
+        min-height: 100%;
+    }
+}
+
+.element-list-simple {
+
+    .is-empty-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: $gray;
+        font-size: 18px;
+        font-style: italic;
+        text-align: center;
+        line-height: 24px;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.element-list-column {
+
+    .is-empty-caption {
+
+    }
+}

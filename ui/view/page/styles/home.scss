@@ -1,0 +1,32 @@
+@import '../../../styles/scaffold';
+
+.page-home {
+    text-align: center;
+    @include linear-gradient(to bottom, $grayLighter, $white 50%);
+
+    .page-home-center {
+        @include tcenter();
+    }
+
+    .page-home-title {
+        color: $grayDark;
+        font-size: 72px;
+        font-weight: $light;
+        font-style: italic;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        white-space: nowrap;
+    }
+
+    .page-home-copy {
+        margin-bottom: 20px;
+        font-size: 11px;
+    }
+
+    .page-home-opensource {
+        display: inline-block;
+
+        img {
+            display: block;
+        }
+    }
+}

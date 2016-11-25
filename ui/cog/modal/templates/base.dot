@@ -1,0 +1,13 @@
+<div class="modal-edge" data-js="drag"></div>
+
+<div class="modal-header-{{=it.type}}{{? !it.title}} no-title{{? }}">
+
+    <h3 class="header-title">{{=it.title}}</h3>
+
+    <a class="header-close" data-js="close">
+        <i class="icon icon-x-bold"></i>
+    </a>
+
+</div>
+
+<div class="modal-content-{{=it.type}}" data-js="content"></div>

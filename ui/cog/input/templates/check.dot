@@ -1,0 +1,15 @@
+{{~ it.items :item}}
+
+    <div class="checkbox-row{{? item.allowCustom}} is-custom{{? }}" data-key="{{=item.key}}" data-js="row">
+
+        <input class="checkbox" type="checkbox" data-js="input" />
+        <i class="icon icon-check is-hidden"></i>
+        <label data-js="label">{{=item.label}}</label>
+
+        {{? item.allowCustom}}
+            <input class="custom-text" type="text" data-js="custom" />
+        {{? }}
+
+    </div>
+
+{{~ }}

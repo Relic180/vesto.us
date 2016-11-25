@@ -1,0 +1,479 @@
+@import '../../../styles/scaffold';
+
+$innerPad: 6px;
+$height: 28px;
+$gutterHeight: 16px;
+$transitionSpeed: 250ms;
+
+.extended-el-text {
+    position: relative;
+    display: inline-block;
+    cursor: text;
+
+    &.is-underlined,
+    &.is-overlined {
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 2px;
+        }
+
+        &::before {
+            width: 100%;
+            left: 50%;
+            background-color: $grayLight;
+            transform: translateX(-50%);
+            transition: background-color $transitionSpeed;
+        }
+
+        &::after {
+            width: 0;
+            left: 0;
+            background-color: $gray;
+            transition: width $transitionSpeed * 1.5;
+        }
+
+        &.is-focused {
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &.is-lighten {
+
+            &::before {
+                background-color: $gray;
+            }
+
+            &::after {
+                background-color: $white;
+            }
+        }
+
+        input,
+        textarea {
+            border: 0;
+        }
+    }
+
+    &.is-underlined {
+        padding-bottom: $gutterHeight;
+
+        &.is-swap-line {
+
+            &::before,
+            &::after {
+                bottom: auto;
+                top: -1px;
+            }
+        }
+
+        &.is-centered {
+
+            .placeholder {
+                transform: translateY(50%) translateX(-50%);
+            }
+        }
+
+        &.is-aligned-right {
+
+            .placeholder {
+                transform: translateY(50%) translateX(-100%);
+            }
+        }
+
+        &::before,
+        &::after {
+            bottom: $gutterHeight - 1;
+        }
+
+        .placeholder {
+            bottom: $gutterHeight + ($height / 2);
+            transform: translateY(50%);
+        }
+
+        .counter {
+            bottom: 1px;
+        }
+
+        .icon {
+            bottom: $gutterHeight + ($height / 2) + 2;
+            transform: translateY(50%);
+        }
+    }
+
+    &.is-overlined {
+        padding-top: $gutterHeight;
+
+        &.is-swap-line {
+
+            &::before,
+            &::after {
+                top: auto;
+                bottom: -1px;
+            }
+        }
+
+        &.is-centered {
+
+            .placeholder {
+                transform: translateY(-50%) translateX(-50%);
+            }
+        }
+
+        &.is-aligned-right {
+
+            .placeholder {
+                transform: translateY(-50%) translateX(-100%);
+            }
+        }
+
+        &::before,
+        &::after {
+            top: $gutterHeight - 1;
+        }
+
+        .placeholder {
+            top: $gutterHeight + ($height / 2);
+            transform: translateY(-50%);
+        }
+
+        .counter {
+            top: 1px;
+        }
+
+        .icon {
+            top: $gutterHeight + ($height / 2);
+            transform: translateY(-50%);
+        }
+    }
+
+    &.is-multiline {
+        width: 100%;
+
+        textarea {
+            height: inherit;
+        }
+
+        .counter {
+            bottom: -12px;
+        }
+    }
+
+    &.has-icon {
+
+        input {
+            padding-right: 30px;
+        }
+    }
+
+    &.is-focused {
+
+        &.is-filled {
+
+            .placeholder {
+                color: $gray;
+            }
+        }
+
+        &.is-lighten {
+
+            input,
+            textarea,
+            .counter,
+            .icon {
+                color: $white;
+            }
+
+            &.is-filled {
+
+                .placeholder {
+                    color: $grayLight;
+                }
+            }
+        }
+
+        &.is-white {
+
+            input,
+            textarea,
+            .counter,
+            .icon {
+                color: $white;
+            }
+
+            &.is-filled {
+
+                .placeholder {
+                    color: $grayLight;
+                }
+            }
+        }
+
+        &.is-blended {
+
+            input,
+            textarea {
+                color: $gray;
+                border: 1px solid $grayLight;
+            }
+        }
+
+        input,
+        textarea,
+        .counter,
+        .icon {
+            color: $gray;
+        }
+
+        .placeholder {
+            color: $grayLight;
+        }
+    }
+
+    &.is-filled {
+
+        &.is-underlined {
+
+            &.is-swap-line {
+
+                .placeholder {
+                    bottom: 7px !important; //TODO: find a clean way to avoid important
+                }
+            }
+
+            .placeholder {
+                bottom: 1px !important; //TODO: find a clean way to avoid important
+            }
+        }
+
+        &.is-overlined {
+
+            &.is-swap-line {
+
+                .placeholder {
+                    top: 7px;
+                }
+            }
+
+            .placeholder {
+                top: 1px;
+            }
+        }
+
+        &.is-swap-line {
+
+            .placeholder {
+                left: 0;
+                font-size: 13px;
+            }
+        }
+
+        &.is-blended {
+
+            .placeholder {
+                bottom: -5px;
+            }
+        }
+
+        &.is-centered,
+        &.is-aligned-right {
+
+            .placeholder {
+                transform: translateY(0%) translateX(0%);
+            }
+        }
+
+        .placeholder {
+            left: $innerPad;
+            font-size: 10px !important; //TODO: find a clean way to avoid important
+            line-height: 10px;
+            color: $gray;
+            transform: translateY(0%) translateX(0%);
+        }
+    }
+
+    &.is-filled-hide-placeholder {
+
+        .placeholder {
+            opacity: 0;
+            transition: all $transitionSpeed / 2;
+        }
+    }
+
+    &.is-centered {
+
+        &::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        input,
+        textarea {
+            text-align: center;
+        }
+
+        .placeholder {
+            left: 50%;
+        }
+    }
+
+    &.is-aligned-right {
+
+        &::after {
+            left: auto;
+            right: 0;
+        }
+
+        input,
+        textarea {
+            text-align: right;
+        }
+
+        .placeholder {
+            left: 100%;
+        }
+
+        .icon {
+            left: auto;
+            right: $innerPad;
+        }
+    }
+
+    &.is-disabled {
+        opacity: .5;
+        cursor: not-allowed;
+
+        input,
+        .icon {
+            pointer-events: none;
+        }
+    }
+
+    &.is-lighten {
+
+        input,
+        textarea {
+            color: $grayLight;
+        }
+    }
+
+    &.is-white {
+
+        input,
+        textarea {
+            color: $white;
+        }
+    }
+
+    input {
+        padding: 0 $innerPad;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        height: $height;
+        font-size: 22px;
+        color: $grayDark;
+        outline: none;
+        box-sizing: border-box;
+        background: transparent;
+
+        &.is-autocompleted {
+            color: $grayLight;
+        }
+    }
+
+    textarea {
+        line-height: $height;
+        overflow: hidden;
+        resize: none;
+        box-sizing: border-box;
+    }
+
+    label { // Placeholder and counter
+        position: absolute;
+        display: block;
+        white-space: nowrap;
+        pointer-events: none;
+    }
+
+    .placeholder {
+        left: $innerPad + 1px;
+        font-size: 16px;
+        color: $gray;
+        transition: all $transitionSpeed;
+    }
+
+    .counter {
+        right: $innerPad;
+        font-size: 10px;
+        color: $grayLight;
+        transition: color $transitionSpeed;
+    }
+
+    .icon {
+        position: absolute;
+        left: $innerPad;
+        color: $gray;
+    }
+
+    .icon-plus {
+        right: $innerPad;
+        left: inherit;
+        font-size: 22px;
+        cursor: pointer;
+
+        &:hover {
+            color: lighten($gray, 15%);
+        }
+    }
+
+    &.is-blended {
+        padding-bottom: 0;
+
+        &.is-multiline {
+
+            .placeholder {
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 5px 7px;
+                white-space: normal;
+            }
+        }
+
+        &::before,
+        &::after {
+            content: none;
+        }
+
+        input,
+        textarea {
+            color: $grayDark;
+            border: 1px solid transparent;
+            transition: border-color $transitionSpeed * 1.5;
+
+        }
+
+        .placeholder {
+            top: 0;
+            bottom: 0;
+            color: $grayLight;
+            transform: none;
+        }
+    }
+
+    .input-constant {
+        position: fixed;
+        top: -9999px;
+        width: $gutterHeight;
+        height: $gutterHeight;
+    }
+}

@@ -3,23 +3,29 @@
 const Hapi = require('hapi'),
       server = new Hapi.Server();
 
-server.connection({
-    host: 'localhost',
-    port: 8000
+server.connection({port: 80});
+
+server.register(require('inert'), (err) => {
+    if (err) throw err;
+
+    server.route({
+        method: 'GET',
+        path: '/bundle/{file}',
+        handler: function (request, reply) {
+            reply.file('./bundle/' + encodeURIComponent(request.params.file));
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/{path*}',
+        handler: function (request, reply) {
+            reply.file('./routes/app.html');
+        }
+    });
 });
-
-server.route({
-    method: 'GET',
-    path:'/',
-    handler: function (request, reply) {
-
-    }
-});
-
-/////////////////////////////////////////////////////////
 
 server.start((err) => {
     if (err) throw err;
-
-    console.log('Server running at:', server.info.uri);
+    console.log(`Server running at: ${server.info.uri}`);
 });

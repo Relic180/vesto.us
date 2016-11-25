@@ -1,0 +1,39 @@
+@import './scaffold';
+
+[draggable] {
+    @include draggable();
+}
+
+//////////////////////////////////////////////////
+
+#application-body {
+    height: 100%;
+    z-index: $z-stage;
+    display: flex;
+    flex-direction: column;
+}
+
+#global-header {
+
+}
+
+#global-content {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    z-index: $z-stage;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#page-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    outline: none;
+
+    &.is-flex-row {
+        flex-direction: row;
+    }
+}

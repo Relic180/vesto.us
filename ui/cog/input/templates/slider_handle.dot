@@ -1,0 +1,3 @@
+{{? it.valueHandle}}
+    <label class="slider-value" data-js="value"></label>
+{{? }}

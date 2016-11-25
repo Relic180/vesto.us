@@ -1,0 +1,36 @@
+{{? it.type === 'text' && it.multiline}}
+    <textarea rows="{{=it.rows}}"
+        {{? it.mousetrap}} class="mousetrap"{{? }}
+        {{? it.required}} required{{? }}
+        {{? it.disabled}} disabled{{? }}
+        {{? it.tabIndex}} tabindex="{{= typeof it.tabIndex === 'number' ? it.tabIndex : 0}}"{{? }}
+        {{? it.minLength}} min-length="{{=it.minLength}}"{{? }}
+        {{? it.autofill}} autocomplete="{{=it.autofill}}"{{? }}
+        data-js="input"></textarea>
+{{?? }}
+    <input type="{{=it.type}}"
+        {{? it.mousetrap}} class="mousetrap"{{? }}
+        {{? it.required}} required{{? }}
+        {{? it.disabled}} disabled{{? }}
+        {{? it.tabIndex}} tabindex="{{= typeof it.tabIndex === 'number' ? it.tabIndex : 0}}"{{? }}
+        {{? it.minLength}} min-length="{{=it.minLength}}"{{? }}
+        {{? it.autofill}} autocomplete="{{=it.autofill}}"{{? }}
+        {{? it.blend && it.bold}} style="font-weight: 900;"{{? }}
+        data-js="input" />
+{{? }}
+
+{{? it.submitIcon}}
+    <i class="icon icon-{{=it.submitIcon}}" data-js="submit"></i>
+{{? }}
+
+{{? it.placeholder}}
+    <label class="placeholder" data-js="placeholder">{{=it.placeholder}}</label>
+{{? }}
+
+{{? it.counter}}
+    <label class="counter">
+        <span class="counter-value" data-js="counter">0</span> / {{=it.counter}}
+    </label>
+{{? }}
+
+<span class="input-constant" data-js="constant"></span>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Page Title!</title> <!-- TODO: Generate this from server response -->
+
+    <!-- TODO: Supply meta SEO/sharing content from server config -->
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <script src="bundle/_pack_onload_styles.js"></script>
+
+    <script type="text/javascript">
+    window.server = { // TODO: Populate this stuff from server
+        authUser: { // Provide authuser if already logged in
+            name: 'Tony'
+        },
+
+        isLOCAL: true,
+        isSTAGING: false,
+        isPRODUCTION: false,
+
+        bundlePath: '/bundle/',
+        trackingConstants: { // Additional tracking values appended to every tracking request
+
+        }
+    };
+    </script>
+
+</head>
+<body>
+
+<div id="application-body">
+
+    <!-- Can insert a fixed header -->
+
+    <div id="global-content">
+        <div id="page-container" data-js="page"></div>
+    </div>
+
+    <!-- Can insert a fixed footer -->
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+
+<script> // Utility lib fallbacks
+    window.jQuery || document.write('<script src="/libs/jquery-3.1.1.min.js">\x3C/script>');
+    window._ || document.write('<script src="/libs/lodash.min.js">\x3C/script>');
+    window.Backbone || document.write('<script src="/libs/backbone-min.js">\x3C/script>');
+    window.TweenMax || document.write('<script src="/libs/TweenMax.min.js">\x3C/script>');
+
+    // Google Analytics
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    // TODO: Debug js error coming from GA analytics - data:application says "Unexpected token var"
+</script>
+
+<script src="bundle/_bones_app.js"></script>
+
+</body>
+</html>

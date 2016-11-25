@@ -1,0 +1,177 @@
+@import '../../../styles/scaffold';
+
+#modal-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    perspective: 1250px;
+    pointer-events: none;
+    z-index: $z-modal;
+
+    .modal-open & {
+        pointer-events: auto;
+
+        #modal-mask {
+            opacity: .6;
+        }
+    }
+
+    .screentip {
+        z-index: $z-modal-screentip;
+    }
+}
+
+#modal-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    opacity: 0;
+    transition: opacity 300ms;
+
+    [data-appsize=mobile] &,
+    [data-appsize=tablet] & {
+        background-color: $white;
+    }
+}
+
+.modal {
+    position: fixed !important; // Needed to override relative style applied by draggabilly lib
+    min-width: 225px;
+    background-color: $white;
+    top: 50%;
+    left: 50%;
+    border-radius: 3px 3px 26px 26px;
+    opacity: 1;
+    box-shadow: 0 30px 50px -20px transparentize($black, .2);
+    z-index: $z-modal;
+
+    .modal-edge {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        bottom: -20px;
+        right: -20px;
+        border-radius: 3px 3px 42px 42px;
+        background: transparentize($gray, .8);
+        border: 1px solid transparentize($grayLight, .8);
+        @include linear-gradient(25deg, transparentize($gray, .8) 45%, transparentize($white, .7) 60%, transparentize($gray, .8));
+        @include draggable();
+    }
+
+    [class|=modal-header] {
+        position: relative;
+        padding: 20px 30px;
+        border-radius: 3px 3px 0 0;
+        background-color: $grayLighter;
+        z-index: $z-modal + 2;
+
+        &.no-title {
+            padding: 0;
+
+            .modal-title {
+                display: none;
+            }
+
+            .header-close {
+                top: 35px;
+            }
+        }
+
+    }
+
+    .header-title {
+        margin: 0;
+        padding-right: 20px;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .header-close {
+        position: absolute;
+        padding: 2px 15px 2px 2px;
+        top: 50%;
+        right: 0;
+        border: 1px solid lighten($grayLight, 7%);
+        border-radius: 20px 0 0 20px;
+        cursor: pointer;
+        transform: translateY(-50%);
+        @include linear-gradient(to bottom, lighten($grayLight, 6%), $white);
+
+        &:hover {
+
+            .icon {
+                color: $grayDark;
+                @include linear-gradient(to top, lighten($highlightLight, 5%), lighten($highlightLight, 10%));
+            }
+        }
+
+        .icon {
+            width: 30px;
+            border: 1px solid $grayLight;
+            border-radius: 15px;
+            color: $gray;
+            font-size: 20px;
+            text-align: center;
+            line-height: 30px;
+            @include linear-gradient(to top, $grayLighter, $white);
+        }
+    }
+
+    [class|=modal-content] {
+        position: relative;
+        padding: 10px 30px 20px;
+        border-radius: 0 0 26px 26px;
+        background-color: $white;
+        z-index: $z-modal + 1;
+        @include clearfix();
+
+        &.no-title {
+            padding: 20px 40px;
+        }
+    }
+
+    [data-appsize=mobile] &,
+    [data-appsize=tablet] & {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        transform: none;
+
+        &.is-typing {
+
+            [class|=modal-content] {
+                top: 65px;
+                transform: translateY(-0%);
+            }
+        }
+
+        #modal-mask {
+            display: none;
+        }
+
+        .modal-header {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+        }
+
+        [class|=modal-content] {
+            position: absolute;
+            width: 100%;
+            max-width: none;
+            padding: 20px;
+            top: 50%;
+            left: 0;
+            box-sizing: border-box;
+            transform: translateY(-50%);
+            transition: top 300ms, transform 300ms;
+        }
+    }
+}

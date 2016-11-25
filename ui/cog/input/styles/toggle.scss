@@ -1,0 +1,91 @@
+@import '../../../styles/scaffold';
+
+$toggleTime: .3s;
+$trackWidth: 60px;
+$smallFactor: $trackWidth / 3;
+$normalFactor: $trackWidth / 2;
+.extended-el-toggle {
+    height: $smallFactor + 6;
+    padding: 0 5px;
+
+    &.is-tall {
+
+        .toggle-switch {
+            width: $trackWidth;
+            height: $normalFactor + 2;
+            border-radius: ($normalFactor + 2) / 2;
+
+            &::after {
+                width: $normalFactor + 6;
+                height: $normalFactor + 6;
+            }
+
+            &.is-toggled {
+
+                &::after {
+                    left: $trackWidth - ($normalFactor + 6) + 4;
+                }
+            }
+        }
+    }
+
+    &.is-wide {
+
+        .toggle-switch {
+            width: $trackWidth;
+
+            &.is-toggled {
+
+                &::after {
+                    left: $trackWidth - ($smallFactor + 6) + 4;
+                }
+            }
+        }
+
+        &.is-tall {
+
+            .toggle-switch {
+                width: $trackWidth + 20;
+
+                &.is-toggled {
+
+                    &::after {
+                        left: ($trackWidth + 20) - ($normalFactor + 6) + 4;
+                    }
+                }
+            }
+        }
+    }
+
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: $trackWidth - 15;
+        height: $smallFactor + 2;
+        margin-top: 2px;
+        background-color: $gray;
+        border-radius: ($smallFactor + 2) / 2;
+        transition: background-color $toggleTime ease-in-out;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: $smallFactor + 6;
+            height: $smallFactor + 6;
+            top: -2px;
+            left: -4px;
+            background-color: $white;
+            border-radius: 50%;
+            box-shadow: -1px 1px 2px;
+            transition: left $toggleTime ease-in-out;
+        }
+
+        &.is-toggled {
+            background-color: $grayDark;
+
+            &::after {
+                left: ($trackWidth - 15) - ($smallFactor + 6) + 4;
+            }
+        }
+    }
+}

@@ -34,10 +34,10 @@
         }
 
         &.success {
-            @include linear-gradient(to bottom, lighten($highlight, 15%), darken($highlight, 5%));
+            @include linear-gradient(to bottom, lighten($success, 15%), darken($success, 5%));
 
             .message-simple-icon {
-                background: lighten($highlight, 15%);
+                background: lighten($success, 15%);
             }
         }
     }

@@ -8,11 +8,19 @@ $grayDark: #635E58;
 $grayDarker: #4A4E4B;
 $black: #000000;
 
-$highlightLighter: #E9f7E5; // Greens // TODO: Find a nice pallet for these
-$highlightLight: #D6E8C7;
-$highlight: #58A05A;
-$highlightDark: #3E753F;
-$highlightDarker: #1D461D;
+// Primary Brand Colors
+$orangeLight: #fb9963;
+$orange: #fe7a35;
+$orangeDark: #FE5613;
+$green: #d1dcbc;
+$blue: #91aa9d;
+$blueDark: #183441;
+
+$successLighter: #E9f7E5; // Greens // TODO: Find a nice pallet for these
+$successLight: #D6E8C7;
+$success: #58A05A;
+$successDark: #3E753F;
+$successDarker: #1D461D;
 
 $errorLighter: #FDF7F7; // Reds // TODO: Find a nice pallet for these
 $errorLight: #EDD3D7;
@@ -20,11 +28,11 @@ $error: #B74B4B;
 $errorDark: #A21313;
 $errorDarker: #8C0000;
 
-$buttonLighter: #B9E2E8; // Primary Button Color
-$buttonLight: #5DB4EF;
-$button: #2A7FB8;
-$buttonDark: #14405D;
-$buttonDarker: #0A334E;
+$buttonLighter: lighten($orangeLight, 7%);
+$buttonLight: $orangeLight;
+$button: $orange;
+$buttonDark: $orangeDark;
+$buttonDarker: darken($orangeDark, 7%);
 
 $facebookBlue: #3765A3;
 $twitterBlue: #5EA9DD;

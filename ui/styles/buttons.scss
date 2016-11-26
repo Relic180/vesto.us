@@ -1,16 +1,22 @@
-$btnTransition: 150ms;
+$btnTransition: 200ms;
 
-.btn {
+@mixin btn-hover($buttonColor, $boxColor) {
+    background-color: lighten(saturate($buttonColor, 25%), 5%);
+    box-shadow: 0 1px 10px -2px transparentize($boxColor, .2);
+}
+
+@mixin btn-focus($focusColor) {
+    @include linear-gradient(to right, transparentize($focusColor, 1), $focusColor, transparentize($focusColor, 1));
+}
+
+button {
     position: relative;
     display: inline-flex;
-    height: 36px;
+    height: 38px;
     padding: 0 20px;
-    border: 1px solid $button;
-    border-radius: 3px;
-    background-color: $button;
-    color: $white;
-    font-size: 14px;
-    line-height: 36px;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 40px;
     text-align: center;
     white-space: nowrap;
     outline: none;
@@ -18,272 +24,158 @@ $btnTransition: 150ms;
     box-sizing: content-box;
     text-decoration: none;
     vertical-align: top;
-    transition: background-color $btnTransition, border-color $btnTransition;
+    transition: background-color $btnTransition, box-shadow $btnTransition * 1.5;
     user-select: none;
+    overflow: hidden;
+
+    // Standard Button
+    color: $white;
+    background-color: $button;
+    box-shadow: 0 0 0 $button;
+
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity $btnTransition;
+        @include btn-focus($buttonDarker);
+    }
 
     &:focus {
-        border-style: dashed;
-        border-color: lighten($button, 10%);
-        background-color: darken($button, 10%);
+
+        &::before {
+            opacity: 1;
+        }
     }
 
     &.hover,
     &:hover {
-        border-color: $buttonDark;
-        background-color: $buttonDark;
-    }
+        @include btn-hover($button, $buttonLighter);
 
-    &[disabled] {
-        opacity: .3;
-        pointer-events: none;
-    }
-
-    &.btn-light {
-        border-color: darken($buttonLight, 7%);
-        background-color: darken($buttonLight, 7%);
-
-        &:not([disabled]) {
-
-            &:focus {
-                border-color: lighten($buttonLight, 7%);
-                background-color: darken($buttonLight, 7%);
-            }
-
-            &.hover,
-            &:hover {
-                border-color: $buttonLighter;
-                background-color: $buttonLight;
-            }
+        &::before {
+            opacity: 0;
         }
     }
 
     &.btn-white {
-        border-color: $white;
         background-color: $white;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(lighten($grayLighter, 5%));
+        }
 
-            &:focus {
-                border-color: $grayLight;
-                background-color: $grayLighter;
-            }
-
-            &.hover,
-            &:hover {
-                border-color: $buttonLight;
-                background-color: $buttonLighter;
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover(lighten($grayLighter, 5%), $white);
         }
 
         label {
-            color: $buttonDark;
-        }
-    }
-
-    &.btn-gray {
-        color: $buttonDark;
-        border-color: $grayLight;
-        background-color: $grayLight;
-
-        &:not([disabled]) {
-
-            &:focus {
-                border-color: $grayLight;
-                background-color: $grayLighter;
-            }
-
-            &.hover,
-            &:hover {
-                color: $white;
-                border-color: $buttonDark;
-                background-color: $buttonDark;
-            }
-        }
-
-        label {
-            color: $buttonDark;
+            color: $blueDark;
+            text-shadow: 0 0 5px $white,
+                         0 0 10px $white,
+                         0 0 15px $white;
         }
     }
 
     &.btn-dark {
-        border-color: $buttonDark;
-        background-color: $buttonDark;
+        background-color: $blueDark;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(lighten($blueDark, 10%));
+        }
 
-            &:focus {
-                border-color: darken($buttonDark, 7%);;
-                background-color: lighten($buttonDark, 7%);
-            }
-
-            &.hover,
-            &:hover {
-                border-color: $buttonDarker;
-                background-color: $buttonDarker;
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover($blueDark, $blue);
         }
     }
 
     &.btn-approve {
-        border-color: $highlightDark;
-        background-color: $highlight;
+        background-color: $success;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(lighten($success, 10%));
+        }
 
-            &:focus {
-                background-color: lighten($highlight, 10%);
-            }
-
-            &.hover,
-            &:hover {
-                background-color: $highlightDark;
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover($success, $success);
         }
     }
 
-    &.btn-cta {
-        border-color: lighten($highlight, 5%);
-        background-color: lighten($highlight, 5%);
-
-        &:not([disabled]) {
-
-            &:focus {
-                background-color: lighten($highlight, 15%);
-            }
-
-            &.hover,
-            &:hover {
-                border-color: $highlightDark;
-                background-color: $highlightDark;
-            }
-        }
-    }
-
-    &.btn-warning {
-        border-color: $errorDark;
+    &.btn-decline {
         background-color: $error;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(lighten($error, 10%));
+        }
 
-            &:focus {
-                background-color: lighten($error, 10%);
-            }
-
-            &.hover,
-            &:hover {
-                background-color: $errorDark;
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover($error, $error);
         }
     }
 
     &.btn-ghost {
-        color: $button;
-        border-color: transparent;
+        color: inherit;
         background-color: transparent;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(transparentize($white, .85));
+        }
 
-            &:focus {
-                background-color: transparentize($gray, .85);
-                box-shadow: 0 0 5px transparentize($gray, .5);
-            }
-
-            &.hover,
-            &:hover {
-                color: darken($button, 10%);
-                background-color: transparentize($button, .85);
-            }
+        &.hover,
+        &:hover {
+            background-color: transparentize($white, .75);
+            box-shadow: none;
         }
     }
 
-    &.btn-hollow {
+    &.btn-hollow { // TODO: Hover on this button is ok, maybe not great though
+        height: 36px;
         color: $button;
+        line-height: 36px;
+        border: 1px solid $button;
         background: transparent;
-        border-color: $button;
+        transition: border-color $btnTransition;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(transparentize($white, .85));
+        }
 
-            &:focus {
-                border-color: $grayLight;
-                background-color: $grayLighter;
-            }
+        &.hover,
+        &:hover {
+            color: $buttonLighter;
+            border-color: $buttonLighter;
+            box-shadow: none;
 
-            &.hover,
-            &:hover {
-                color: $white;
-                background-color: $button;
+            label {
+                text-shadow: 0 0 3px $white,
+                             0 0 15px transparentize($white, .5);
             }
         }
 
-        &.btn-light {
-            color: $buttonLight;
-            border-color: $buttonLight;
-
-            &:focus {
-                border-color: $grayLighter;
-                background-color: lighten($grayLighter, 5%);
-            }
-
-            &.hover,
-            &:hover {
-                color: $white;
-                background-color: $buttonLight;
-            }
-        }
-
-        &.btn-dark {
-            color: $buttonDark;
-            border-color: $buttonDark;
-
-            &:focus {
-                border-color: $gray;
-                background-color: $grayLight;
-            }
-
-            &.hover,
-            &:hover {
-                color: $white;
-                background-color: $buttonDark;
-            }
-        }
-
-        &.btn-ghost {
-            color: $grayLight;
-            border-color: transparent;
-
-            &:not([disabled]) {
-
-                &:focus {
-                    border-color: lighten($grayLighter, 5%);
-                    text-decoration: underline;
-                }
-
-                &.hover,
-                &:hover {
-                    border-color: $buttonLighter;
-                    color: $buttonLight;
-                    box-shadow: 0 0 10px transparentize($grayDark, .7);
-                    background-color: transparent;
-                }
-            }
+        label {
+            transition: text-shadow $btnTransition;
+            text-shadow: 0 0 0 $button;
         }
     }
 
     &.btn-google {
-        border-color: lighten($googleRed, 5%);
         background-color: $googleRed;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(darken($googleRed, 5%));
+        }
 
-            &:focus {
-                border-color: lighten($googleRed, 10%);
-                background-color: darken($googleRed, 10%);
-            }
-
-            &.hover,
-            &:hover {
-                background-color: lighten($googleRed, 10%);
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover($googleRed, $googleRed);
         }
 
         &.btn-large {
@@ -303,28 +195,18 @@ $btnTransition: 150ms;
         .icon-google-plus {
             font-size: 20px;
         }
-
-        label {
-            font-size: 16px;
-            font-weight: $bold;
-        }
     }
 
     &.btn-facebook {
-        border-color: lighten($facebookBlue, 5%);
         background-color: $facebookBlue;
 
-        &:not([disabled]) {
+        &::before { // Focused BG color
+            @include btn-focus(darken($facebookBlue, 5%));
+        }
 
-            &:focus {
-                border-color: lighten($facebookBlue, 10%);
-                background-color: darken($facebookBlue, 10%);
-            }
-
-            &.hover,
-            &:hover {
-                background-color: lighten($facebookBlue, 10%);
-            }
+        &.hover,
+        &:hover {
+            @include btn-hover($facebookBlue, $facebookBlue);
         }
 
         &.btn-large {
@@ -333,7 +215,6 @@ $btnTransition: 150ms;
                 font-size: 24px;
             }
         }
-
 
         &.btn-small {
 
@@ -345,47 +226,34 @@ $btnTransition: 150ms;
         .icon-facebook-f {
             font-size: 20px;
         }
+    }
+
+    &[disabled] {
+        opacity: .5;
+        pointer-events: none;
+
+        &::before {
+            opacity: 1;
+            @include linear-gradient(to bottom, transparentize($grayDarker, .4), transparentize($grayDarker, .6));
+        }
 
         label {
-            font-size: 16px;
-            font-weight: $bold;
+            text-shadow: none;
         }
     }
 
     &.btn-large {
-        height: 45px;
-        padding: 0 24px;
-        border-radius: 4px;
-        font-size: 18px;
-        line-height: 45px;
-
-        .icon {
-
-            &.icon-btn {
-                padding-right: 10px;
-            }
-        }
+        height: 50px;
+        border-radius: 25px;
+        font-size: 20px;
+        line-height: 50px;
     }
 
     &.btn-small {
         height: 26px;
-        padding: 0 15px;
-        font-size: 12px;
+        border-radius: 13px;
+        font-size: 11px;
         line-height: 26px;
-
-        .icon {
-
-            &:last-child {
-
-                &.icon-btn {
-                    left: 8px;
-                }
-            }
-
-            &.icon-btn {
-                left: -8px;
-            }
-        }
     }
 
     &.btn-icon-only {
@@ -395,6 +263,7 @@ $btnTransition: 150ms;
 
     label,
     .icon {
+        position: relative;
         flex-grow: 1;
         margin-right: 5px;
         color: inherit;
@@ -433,6 +302,7 @@ $btnTransition: 150ms;
         font-size: inherit;
         overflow: hidden;
         text-overflow: ellipsis;
+        transition: color $btnTransition;
 
         &:last-child {
             margin-right: 0;

@@ -104,7 +104,7 @@
 
             .icon {
                 color: $grayDark;
-                @include linear-gradient(to top, lighten($highlightLight, 5%), lighten($highlightLight, 10%));
+                @include linear-gradient(to top, lighten($successLight, 5%), lighten($successLight, 10%));
             }
         }
 

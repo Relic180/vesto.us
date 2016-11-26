@@ -5,7 +5,7 @@
     &.loader-light {
 
         &::before {
-            border-color: $highlight;
+            border-color: $success;
         }
     }
 
@@ -18,7 +18,7 @@
         top: 50%;
         left: 50%;
         box-sizing: border-box;
-        border: 0 solid $highlight;
+        border: 0 solid $success;
         border-radius: 50%;
         transform: translate(-50%, -50%);
         animation: loader-blob 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);

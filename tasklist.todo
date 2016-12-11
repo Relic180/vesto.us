@@ -1,0 +1,32 @@
+Before Product Spec:
+ ☐ Add SVG icon support and icons to platform
+ ☐ Build out "coming soon" page
+ ☐ Port over recent fixes and improvements to spa-bones (and vesto.us) from olympus
+ ☐ Get analytics up and running properly
+Product Spec:
+ ☐ Identify MVP behavior
+ ☐ Create primary "dashboard" view
+ ☐ Revisit branding creative assets and update as needed
+For Initial Beta:
+ ☐ Create support for logging invia 3rd party platforms
+   ☐ Facebook
+   ☐ Twitter
+   ☐ Google+
+   ☐ Instagram
+   ☐ Identify any others?
+   ☐ Create login buttons for supported platforms
+ ☐ Build out dashboard page
+ ☐ Integrate issue tracking collection
+To Market:
+ ☐ Release to Beta users, collect feedback
+   ☐ Improve performance
+   ☐ Add Features
+   ☐ Fix Bugs
+   ☐ Figure out how to actually check any of these issues off
+ ☐ Open up to all users (requires logging in via 3rd party platform)
+Post Release:
+ ☐ Rebuild my others sites and integrate a hub navigation mechanic
+   ☐ CrackinFilms
+   ☐ Crackin.com
+   ☐ BeInspired (echochamber for instagram account)
+ ☐ Native app
